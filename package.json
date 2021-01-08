@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "lodash-es": "^4.17.20",
     "nuxt": "^2.14.5"
   },
   "devDependencies": {
