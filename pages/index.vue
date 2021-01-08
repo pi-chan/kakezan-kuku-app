@@ -26,18 +26,18 @@
             class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click="handleProceedToNext"
           >
-            次へ
+            つぎへ
           </button>
         </div>
         <div class="text-center">
           <span class="text-2xl" v-text="index+1" />
           /
           <span class="text-2xl" v-text="kukus.length" />
-          <span v-text="`（残り${kukus.length - index - 1}）`" />
+          <span v-text="`（のこり${kukus.length - index - 1}）`" />
         </div>
         <div class="flex lex-1 items-center justify-center mb-6">
           <button type="button" class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" @click="handleStart">
-            RESTART!
+            さいしょからやりなおす
           </button>
         </div>
       </main>
@@ -45,14 +45,14 @@
     <template v-else-if="isStarted && index >= kukus.length">
       <div class="flex lex-1 items-center justify-center height100">
         <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
-          おつかれ！もう1回やる？
+          おつかれさま！もう1回やる？
         </button>
       </div>
     </template>
     <template v-else>
       <div class="flex lex-1 items-center justify-center height100">
         <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
-          START!
+          はじめる！
         </button>
       </div>
     </template>
