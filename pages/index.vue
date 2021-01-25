@@ -36,7 +36,7 @@
           <span v-text="`（のこり${kukus.length - index - 1}）`" />
         </div>
         <div class="flex lex-1 items-center justify-center mb-6">
-          <button type="button" class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" @click="handleStart">
+          <button type="button" class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" @click="handleStartWithConfirm">
             さいしょからやりなおす
           </button>
         </div>
@@ -90,6 +90,12 @@ export default {
   created () {
   },
   methods: {
+    handleStartWithConfirm () {
+      const result = window.confirm('本当にやりなおす？')
+      if (result) {
+        this.handleStart()
+      }
+    },
     handleStart () {
       const base = [1, 2, 3, 4, 5, 6, 7, 8, 9]
       const array = []
