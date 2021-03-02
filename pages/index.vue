@@ -29,24 +29,33 @@
             つぎへ
           </button>
         </div>
-        <div class="text-center">
+        <div class="text-center mb-10">
           <span class="text-2xl" v-text="index+1" />
           /
           <span class="text-2xl" v-text="kukus.length" />
           <span v-text="`（のこり${kukus.length - index - 1}）`" />
         </div>
-        <div class="flex lex-1 items-center justify-center mb-6">
-          <button type="button" class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" @click="handleStartWithConfirm">
+        <div class="flex flex-1 items-center justify-center mb-6">
+          <button
+            type="button"
+            class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            @click="handleStartWithConfirm"
+          >
             さいしょからやりなおす
           </button>
         </div>
       </main>
     </template>
     <template v-else-if="isStarted && index >= kukus.length">
-      <div class="flex lex-1 items-center justify-center height100">
-        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
-          おつかれさま！もう1回やる？
-        </button>
+      <div class="flex flex-1 items-center justify-center height100">
+        <div>
+          <button type="button" class="mb-10 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
+            おつかれさま！もう1回やる？
+          </button>
+          <div class="text-center">
+            <span class="text" v-text="elapsedTimeString" />
+          </div>
+        </div>
       </div>
     </template>
     <template v-else>
@@ -54,7 +63,7 @@
         <div class="h-10 text-4xl text-center mb-24">
           かけ算
         </div>
-        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
+        <button type="button" class="inline-flex items-center mb-10 px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
           はじめる！
         </button>
       </div>
@@ -76,7 +85,8 @@ export default {
       answers: [],
       index: 0,
       isStarted: false,
-      isAnswerShown: false
+      isAnswerShown: false,
+      elapsedTime: 0
     }
   },
   computed: {
@@ -85,11 +95,30 @@ export default {
     },
     currentAnswer () {
       return this.answers[this.index]
+    },
+    elapsedTimeString () {
+      const micro = this.zeroPadding((parseInt(this.elapsedTime / 10) % 100), 2)
+      const sec = this.elapsedTime / 1000.0
+      const minute = parseInt(sec / 60)
+      const second = parseInt(sec) % 60
+
+      return `${minute}分 ${second}秒 ${micro}`
+    }
+  },
+  watch: {
+    index () {
+      if (this.isStarted && this.index >= this.kukus.length) {
+        console.log('clear')
+        clearInterval(this.timer)
+      }
     }
   },
   created () {
   },
   methods: {
+    zeroPadding (num, length) {
+      return ('0000000000' + num).slice(-length)
+    },
     handleStartWithConfirm () {
       const result = window.confirm('本当にやりなおす？')
       if (result) {
@@ -119,6 +148,11 @@ export default {
       this.answers = answers
       this.isStarted = true
       this.index = 0
+      this.elapsedTime = 0
+
+      this.timer = setInterval(() => {
+        this.elapsedTime += 10
+      }, 10)
     },
     handleShowAnswer () {
       this.isAnswerShown = !this.isAnswerShown
