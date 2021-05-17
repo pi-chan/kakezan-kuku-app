@@ -149,6 +149,9 @@ export default {
       this.isStarted = true
       this.index = 0
       this.elapsedTime = 0
+      if (this.timer) {
+        clearInterval(this.timer)
+      }
 
       this.timer = setInterval(() => {
         this.elapsedTime += 10
