@@ -1,76 +1,76 @@
 <template>
-<div class="container mx-auto">
-  <div class="flex items-center justify-center inner-wrapper">
-    <template v-if="isStarted && index < kukus.length">
-      <main class="p-4 sm:p-6 lg:p-8 ">
-        <div class="text-center mb-6">
-          <div class="text-kuku" v-text="currentKuku" />
-        </div>
-        <div class="mb-6">
-          <template v-if="isAnswerShown">
-            <div class="h-10 text-2xl text-center" v-text="currentAnswer" />
-          </template>
-          <template v-else>
-            <div class="h-10" />
-          </template>
-        </div>
-        <div class="flex lex-1 items-center justify-center mb-6">
-          <button
-            type="button"
-            class="mr-12 btn btn-primary"
-            @click="handleShowAnswer"
+  <div class="container mx-auto">
+    <div class="flex items-center justify-center inner-wrapper">
+      <template v-if="isStarted && index < kukus.length">
+        <main class="p-4 sm:p-6 lg:p-8 ">
+          <div class="text-center mb-6">
+            <div class="text-kuku" v-text="currentKuku" />
+          </div>
+          <div class="mb-6">
+            <template v-if="isAnswerShown">
+              <div class="h-10 text-2xl text-center" v-text="currentAnswer" />
+            </template>
+            <template v-else>
+              <div class="h-10" />
+            </template>
+          </div>
+          <div class="flex lex-1 items-center justify-center mb-6">
+            <button
+              type="button"
+              class="mr-12 btn btn-primary"
+              @click="handleShowAnswer"
             >
-            答え
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="handleProceedToNext"
+              答え
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              @click="handleProceedToNext"
             >
-            つぎへ
-          </button>
-        </div>
-        <div class="text-center mb-10">
-          <span class="text-2xl" v-text="index+1" />
-          /
-          <span class="text-2xl" v-text="kukus.length" />
-          <span v-text="`（のこり${kukus.length - index - 1}）`" />
-        </div>
-        <div class="flex flex-1 items-center justify-center mb-6">
-          <button
-            type="button"
-            class="restart-button btn btn-error"
-            @click="handleStartWithConfirm"
+              つぎへ
+            </button>
+          </div>
+          <div class="text-center mb-10">
+            <span class="text-2xl" v-text="index+1" />
+            /
+            <span class="text-2xl" v-text="kukus.length" />
+            <span v-text="`（のこり${kukus.length - index - 1}）`" />
+          </div>
+          <div class="flex flex-1 items-center justify-center mb-6">
+            <button
+              type="button"
+              class="restart-button btn btn-error"
+              @click="handleStartWithConfirm"
             >
-            さいしょからやりなおす
-          </button>
-        </div>
-      </main>
-    </template>
-    <template v-else-if="isStarted && index >= kukus.length">
-      <div class="flex flex-1 items-center justify-center height100">
-        <div>
-          <button type="button" class="mb-10 btn btn-primary" @click="handleStart">
-            おつかれさま！もう1回やる？
-          </button>
-          <div class="text-center">
-            <span class="text" v-text="elapsedTimeString" />
+              さいしょからやりなおす
+            </button>
+          </div>
+        </main>
+      </template>
+      <template v-else-if="isStarted && index >= kukus.length">
+        <div class="flex flex-1 items-center justify-center height100">
+          <div>
+            <button type="button" class="mb-10 btn btn-primary" @click="handleStart">
+              おつかれさま！もう1回やる？
+            </button>
+            <div class="text-center">
+              <span class="text" v-text="elapsedTimeString" />
+            </div>
           </div>
         </div>
-      </div>
-    </template>
-    <template v-else>
-      <div class="flex flex-col items-center justify-center height100">
-        <div class="h-10 text-4xl text-center mb-24">
-          わり算
+      </template>
+      <template v-else>
+        <div class="flex flex-col items-center justify-center height100">
+          <div class="h-10 text-4xl text-center mb-24">
+            わり算
+          </div>
+          <button type="button" class="btn btn-primary" @click="handleStart">
+            はじめる！
+          </button>
         </div>
-        <button type="button" class="btn btn-primary" @click="handleStart">
-          はじめる！
-        </button>
-      </div>
-    </template>
+      </template>
+    </div>
   </div>
-</div>
 </template>
 
 <script>

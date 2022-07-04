@@ -1,19 +1,19 @@
 <template>
-<div class="container mx-auto">
-  <div class="flex items-center justify-center inner-wrapper">
-    <ul class="flex flex-row">
-      <li class="mr-8">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-center inner-wrapper">
+      <ul class="flex flex-row">
+        <li class="mr-8">
           <nuxt-link to="/kakezan" class="btn btn-primary">
             かけ算
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link to="/warizan" class="btn btn-primary">
-          わり算
-        </nuxt-link>
-      </li>
-    </ul>
-  </div>
+          </nuxt-link>
+        </li>
+        <li>
+          <nuxt-link to="/warizan" class="btn btn-primary">
+            わり算
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
