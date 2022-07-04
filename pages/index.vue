@@ -1,6 +1,5 @@
 <template>
 <div class="container mx-auto">
-  <the-navigation />
   <div class="flex items-center justify-center inner-wrapper">
     <ul class="flex flex-row">
       <li class="mr-8">

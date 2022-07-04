@@ -1,7 +1,10 @@
 <template>
 <div>
-  <Nuxt />
-</div>
+  <div class="container mx-auto">
+    <the-navigation/>
+  </div>
+    <Nuxt />
+  </div>
 </template>
 
 <style>

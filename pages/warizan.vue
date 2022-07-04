@@ -1,6 +1,5 @@
 <template>
 <div class="container mx-auto">
-  <the-navigation />
   <div class="flex items-center justify-center inner-wrapper">
     <template v-if="isStarted && index < kukus.length">
       <main class="p-4 sm:p-6 lg:p-8 ">
