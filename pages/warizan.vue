@@ -1,5 +1,7 @@
 <template>
-  <div class="container mx-auto bg-gray-100">
+<div class="container mx-auto">
+  <the-navigation />
+  <div class="flex items-center justify-center inner-wrapper">
     <template v-if="isStarted && index < kukus.length">
       <main class="p-4 sm:p-6 lg:p-8 ">
         <div class="text-center mb-6">
@@ -16,16 +18,16 @@
         <div class="flex lex-1 items-center justify-center mb-6">
           <button
             type="button"
-            class="mr-12 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="mr-12 btn btn-primary"
             @click="handleShowAnswer"
-          >
+            >
             答え
           </button>
           <button
             type="button"
-            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="btn btn-primary"
             @click="handleProceedToNext"
-          >
+            >
             つぎへ
           </button>
         </div>
@@ -38,9 +40,9 @@
         <div class="flex flex-1 items-center justify-center mb-6">
           <button
             type="button"
-            class="restart-button inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            class="restart-button btn btn-error"
             @click="handleStartWithConfirm"
-          >
+            >
             さいしょからやりなおす
           </button>
         </div>
@@ -49,7 +51,7 @@
     <template v-else-if="isStarted && index >= kukus.length">
       <div class="flex flex-1 items-center justify-center height100">
         <div>
-          <button type="button" class="mb-10 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
+          <button type="button" class="mb-10 btn btn-primary" @click="handleStart">
             おつかれさま！もう1回やる？
           </button>
           <div class="text-center">
@@ -63,12 +65,13 @@
         <div class="h-10 text-4xl text-center mb-24">
           わり算
         </div>
-        <button type="button" class="inline-flex items-center mb-10 px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" @click="handleStart">
+        <button type="button" class="btn btn-primary" @click="handleStart">
           はじめる！
         </button>
       </div>
     </template>
   </div>
+</div>
 </template>
 
 <script>
@@ -169,8 +172,8 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  height: 100vh;
+.inner-wrapper {
+  height: calc(100vh - 80px);
   overflow-y: scroll;
 }
 

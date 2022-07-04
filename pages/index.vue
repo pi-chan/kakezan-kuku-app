@@ -1,11 +1,13 @@
 <template>
-  <div class="container mx-auto bg-gray-100 flex items-center justify-center">
+<div class="container mx-auto">
+  <the-navigation />
+  <div class="flex items-center justify-center inner-wrapper">
     <ul class="flex flex-row">
       <li class="mr-8">
         <nuxt-link to="/kakezan">
           <button
             type="button"
-            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="btn btn-primary"
             @click="handleProceedToNext"
           >
             かけ算
@@ -16,7 +18,7 @@
         <nuxt-link to="/warizan">
           <button
             type="button"
-            class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            class="btn btn-primary"
             @click="handleProceedToNext"
           >
             わり算
@@ -25,11 +27,12 @@
       </li>
     </ul>
   </div>
+  </div>
 </template>
 
 <style scoped>
-.container {
-  height: 100vh;
+.inner-wrapper {
+  height: calc(100vh - 80px);
   overflow-y: scroll;
 }
 
