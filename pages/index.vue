@@ -4,25 +4,13 @@
   <div class="flex items-center justify-center inner-wrapper">
     <ul class="flex flex-row">
       <li class="mr-8">
-        <nuxt-link to="/kakezan">
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="handleProceedToNext"
-          >
+          <nuxt-link to="/kakezan" class="btn btn-primary">
             かけ算
-          </button>
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/warizan">
-          <button
-            type="button"
-            class="btn btn-primary"
-            @click="handleProceedToNext"
-          >
-            わり算
-          </button>
+        <nuxt-link to="/warizan" class="btn btn-primary">
+          わり算
         </nuxt-link>
       </li>
     </ul>
